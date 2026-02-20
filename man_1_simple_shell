@@ -1,0 +1,56 @@
+.TH simple_shell 1 "February 2026" "1.0" "Simple Shell Manual"
+
+.SH NAME
+simple_shell \- a simple UNIX command line interpreter
+
+.SH SYNOPSIS
+.B simple_shell
+
+.SH DESCRIPTION
+simple_shell is a simple UNIX command line interpreter written in C.
+
+It reads commands from standard input and executes them using
+fork(2), execve(2), and waitpid(2).
+
+The shell supports execution of commands with arguments and
+searches for executables in the PATH environment variable.
+
+If the executable is not found, an error message is displayed.
+
+The shell works in both interactive and non-interactive mode.
+
+.SH BUILTINS
+.TP
+.B exit
+Exit the shell.
+.TP
+.B env
+Print the current environment variables.
+
+.SH RETURN VALUE
+The simple_shell returns the exit status of the last executed command.
+
+.SH ENVIRONMENT
+The shell uses the PATH environment variable to search for commands.
+
+.SH EXAMPLES
+Run the shell:
+
+.nf
+$ ./simple_shell
+newshell$ ls
+newshell$ exit
+.fi
+
+Non-interactive mode:
+
+.nf
+$ echo "/bin/ls" | ./simple_shell
+.fi
+
+.SH AUTHOR
+Aysu Mustafazade
+Salim Haciyev
+
+.SH SEE ALSO
+sh(1), bash(1), execve(2), fork(2), waitpid(2)
